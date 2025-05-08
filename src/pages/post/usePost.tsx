@@ -9,7 +9,6 @@ import {useNavigate} from "react-router-dom";
 
 export const usePost = () => {
     const navigate = useNavigate()
-
     const [data, setData] = useState<IPostResponse[]>([])
     useEffect(() => {
         fetch(ENV_CONSTANTS.ENDPOINT + ENDPOINT_CONSTANTS.POSTS())
@@ -21,7 +20,7 @@ export const usePost = () => {
     const uiUserId = (data: GridRenderCellParams<IPostResponse>) => <div className={'text-center'}>{data.row.userId}</div>
     const uiTitle = (data: GridRenderCellParams<IPostResponse>) => <>{data.row.title}</>
     const uiBody = (data: GridRenderCellParams<IPostResponse>) => <>{data.row.body}</>
-    const uiAction = (data: GridRenderCellParams<IPostResponse>) => <Button onClick={() => navigate(RoutesConstants.POSTS_COMMENT(data.row.id))}>See Comment</Button>
+    const uiAction = (data: GridRenderCellParams<IPostResponse>) => <Button variant={'text'}  onClick={() => navigate(RoutesConstants.POSTS_COMMENT(data.row.id))}>Comment</Button>
 
     const columnData: GridColDef[] = [
         {
